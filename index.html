@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Santiago Olea</title>
+  <meta name="description" content="Santiago Olea — M&A consultant, aerospace specialist, and investor in small A&D businesses in North America.">
+  <meta property="og:title" content="Santiago Olea">
+  <meta property="og:description" content="M&A consultant, aerospace specialist, and investor in small A&D businesses in North America.">
+  <meta property="og:image" content="./headshot.jpeg">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%231B3B6F' width='100' height='100' rx='16'/><text x='50' y='68' font-family='sans-serif' font-size='44' font-weight='600' fill='white' text-anchor='middle'>SO</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #F8F7F4;
+      --text: #1A1A18;
+      --accent: #1B3B6F;
+      --muted: #6B6A66;
+      --border: #E2E0DA;
+      --white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text);
+      background-color: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 100;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    nav.scrolled {
+      background-color: var(--white);
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      position: relative;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      position: absolute;
+      left: 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-toggle span:nth-child(1) { top: 6px; }
+    .nav-toggle span:nth-child(2) { top: 12px; }
+    .nav-toggle span:nth-child(3) { top: 18px; }
+
+    .nav-toggle.open span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    .nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle.open span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* SECTIONS */
+    .section {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .section p {
+      margin-bottom: 16px;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 140px 24px 60px;
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 64px;
+      width: 100%;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 76px;
+      font-weight: 400;
+      letter-spacing: -1px;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .hero-tagline {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 24px;
+    }
+
+    .hero-ctas a {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+
+    .hero-ctas a:hover {
+      color: var(--text);
+    }
+
+    .hero-photo {
+      flex-shrink: 0;
+    }
+
+    .hero-photo img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    /* SECTION HEADINGS */
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    /* CONTACT */
+    .contact-intro {
+      margin-bottom: 48px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 520px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--white);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+    }
+
+    .submit-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px 32px;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background-color 0.2s;
+    }
+
+    .submit-btn:hover {
+      background: #152e57;
+    }
+
+    .form-success {
+      display: none;
+      padding: 16px;
+      background: #e8f5e9;
+      border-radius: 6px;
+      color: #2e7d32;
+      font-size: 15px;
+    }
+
+    .contact-direct {
+      margin-top: 40px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .contact-direct a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+
+    .contact-direct a:hover {
+      color: var(--text);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 48px 24px;
+      font-size: 14px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--text);
+    }
+
+    .footer-sep {
+      margin: 0 8px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 24px;
+      }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 24px;
+        gap: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 120px 24px 80px;
+      }
+
+      .hero-inner {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 32px;
+      }
+
+      .hero-name {
+        font-size: 48px;
+      }
+
+      .hero-ctas {
+        justify-content: center;
+      }
+
+      .hero-photo img {
+        width: 180px;
+        height: 180px;
+      }
+
+      .section {
+        padding: 72px 24px;
+      }
+
+      h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="#" class="nav-logo">Santiago Olea</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#outside">Outside the Office</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1 class="hero-name">Santiago Olea</h1>
+        <p class="hero-tagline">I&rsquo;m a former M&amp;A consultant and aerospace specialist who now invests in attractive small A&amp;D businesses in North America.</p>
+        <div class="hero-ctas">
+          <a href="#about">Read more &darr;</a>
+          <a href="#contact">Get in touch &rarr;</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="./headshot.jpeg" alt="Santiago Olea" width="220" height="220">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <p class="section-label">About</p>
+    <p>I grew up on the move: born in Venezuela and raised mostly in Miami with stints in Bogot&aacute;, Guatemala City, and Mexico City before returning to the United States. Always keenly interested in international politics, I majored in International Political Economy at Georgetown University&nbsp;&mdash; I thought I&rsquo;d go into the foreign service after school, but life had other plans for me.</p>
+    <p>After graduating from Georgetown, I ended up joining the global management consulting firm Oliver Wyman, where I quickly specialized at the intersection of aerospace and defense and private equity. My day-to-day job involved supporting private equity clients with advisory and commercial due diligence for aerospace assets they were buying or selling. Throughout my career, I&rsquo;ve supported clients on over 45 transactions across the A&amp;D landscape, but with a primary focus on civil &amp; commercial aerospace. I got a lot of reps in, and touched a lot of sub-sectors within aerospace: MRO, PMA manufacturing, production supply chain, distribution, aircraft &amp; engine leasing, FBOs, airport services, defense electronics&hellip; you name it, I&rsquo;ve probably supported at least one transaction in the space.</p>
+    <p>I left OW in early 2025&nbsp;&mdash; not because it wasn&rsquo;t going well, it was. In fact, I had risen from an entry-level Consultant to Engagement Manager within three years, the fastest possible ascent to the manager role at the firm. Despite my upward trajectory at the firm, I left because I realized that I didn&rsquo;t want my &ldquo;ownership&rdquo; to stop once the due diligence report was delivered&nbsp;&mdash; I wanted true ownership and accountability over the course of a deal lifecycle, and wanted to put my domain expertise to work. Which brings me to what I do now&hellip;</p>
+  </section>
+
+  <section class="section" id="work">
+    <p class="section-label">What I Do</p>
+    <p>I still moonlight as a freelance consultant, taking on select commercial and strategic due diligence work for aerospace assets, but that&rsquo;s not really my focus. My real focus right now is finding and acquiring attractive small aerospace businesses based in North America in the $1&ndash;10M EBITDA/SDE range. I leverage my domain and deal expertise to source, diligence, close, and operate great aerospace companies, providing a unique, focused angle in the lower middle market for investors looking to gain exposure to A&amp;D.</p>
+  </section>
+
+  <section class="section" id="outside">
+    <p class="section-label">Outside the Office</p>
+    <p>My interest&nbsp;&mdash; dare I say obsession&nbsp;&mdash; with aerospace and aviation (I&rsquo;m a self-professed &ldquo;AvGeek&rdquo;) is not a product of my day job; it actually started much, much earlier. I was introduced to aviation through flight simulation when I was a kid, and I was instantly hooked. That interest only grew stronger over time, and eventually I obtained my private pilot license. Aside from flying, I also like to cook and enjoy a nice wine (I&rsquo;m a bit of a snob in this department). I don&rsquo;t consider myself an athlete, but I do like working out&nbsp;&mdash; mainly golf and running. My wife and I live between Mexico City and Miami with Otto, our Bernese Mountain Dog.</p>
+  </section>
+
+  <section class="section" id="contact">
+    <p class="section-label">Get in Touch</p>
+    <p class="contact-intro">Whether you&rsquo;re thinking about selling your business, looking for a diligence partner, or just want to connect&nbsp;&mdash; I&rsquo;d love to hear from you.</p>
+
+    <!--
+      To activate this form:
+      1. Sign up at https://formspree.io with santiago@oleagrp.com
+      2. Create a new form and copy the form ID
+      3. Replace YOUR_FORM_ID in the action URL below
+    -->
+    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xzdooqqn" method="POST">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send message &rarr;</button>
+    </form>
+    <div class="form-success" id="formSuccess">Thanks for reaching out! I&rsquo;ll get back to you soon.</div>
+
+    <p class="contact-direct">Or reach me directly at <a href="mailto:info@oleagrp.com">info@oleagrp.com</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Santiago Olea<span class="footer-sep">&middot;</span><a href="mailto:info@oleagrp.com">info@oleagrp.com</a><span class="footer-sep">&middot;</span><a href="https://www.linkedin.com/in/santiagoolea" target="_blank" rel="noopener">LinkedIn</a>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    navToggle.addEventListener('click', function () {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    var form = document.getElementById('contactForm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function (response) {
+        if (response.ok) {
+          form.style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+          form.reset();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
